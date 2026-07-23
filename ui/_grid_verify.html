@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="ru" data-ui-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https: file:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'" />
+  <title>grid verify</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* Test-only: make body background opaque so screenshots are readable even
+       without the WebGL canvas. Does NOT affect the .grid layout under test. */
+    body { background: #050507; }
+  </style>
+</head>
+<body>
+  <div class="bg" aria-hidden="true"><canvas id="bg3d"></canvas><div class="bg-noise"></div></div>
+
+  <div class="app">
+    <div class="titlebar">
+      <div class="titlebar-left"><span class="titlebar-mark"></span><span class="titlebar-title">Editor Helper</span><span class="titlebar-version">v.0.0.1 beta</span></div>
+      <div class="titlebar-controls"><button class="tb-btn">—</button><button class="tb-btn">▢</button><button class="tb-btn tb-close">✕</button></div>
+    </div>
+
+    <aside class="sidebar glass">
+      <div class="brand"><div class="brand-mark"></div><div class="brand-text"><div class="brand-title">Editor Helper</div><div class="brand-sub">After Effects</div></div></div>
+      <nav class="cat-nav" id="catNav">
+        <button class="cat-btn active" data-cat="all"><span class="cat-label">Все плагины</span><span class="cat-count">0</span></button>
+        <button class="cat-btn" data-cat="plugin"><span class="cat-label">Plug-ins</span><span class="cat-count">0</span></button>
+        <button class="cat-btn" data-cat="app"><span class="cat-label">Приложения</span><span class="cat-count">0</span></button>
+      </nav>
+      <div class="side-section"><div class="side-label">Версия After Effects</div><div class="select-wrap"><select class="select"><option>2026</option></select></div></div>
+      <div class="side-foot"><span class="dot"></span><span>готово</span></div>
+    </aside>
+
+    <main class="main" id="main">
+      <header class="topbar glass">
+        <div class="search-wrap"><span class="search-ico">⌕</span><input id="search" type="text" placeholder="Поиск…" /></div>
+        <div class="select-wrap sort-wrap"><select class="select sort-select"><option>Популярные</option></select></div>
+        <button class="icon-btn">⟳</button>
+        <div class="top-stats" id="topStats">14 элементов</div>
+      </header>
+      <div class="content">
+        <section id="view-catalog" class="view active">
+          <div id="grid" class="grid"></div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    // Populate the grid with realistic .card markup so widths/padding match the
+    // real catalog. Count is set via ?count= in the URL.
+    const NAMES = ['DeepGlow','AtomX','Motion Bro','Saber','Optics Compensation',
+      'Flow','Animation Studio','Ray Dynamic','Brush','Handy Cam','Geo Layers',
+      'Lottie','KBar','FX Console','Reprojecc','Null'];
+    function buildCard(i) {
+      const n = NAMES[i % NAMES.length];
+      const t = (i % 3 === 0) ? 'app' : (i % 2 === 0 ? 'plugin' : 'script');
+      // Vary content to exercise the equal-height clamping: some long names,
+      // some long descriptions, varying tag counts (incl. 0 tags).
+      const longName = (i % 4 === 0) ? 'Очень длинное название продукта, которое занимает несколько строк' : n + ' ' + (i+1);
+      const longDesc = (i % 3 === 1) ? 'Подробное описание плагина ' + n + ' для After Effects, которое должно обрезаться до двух строк многоточием в конце.' : 'Описание ' + n + '.';
+      const tagCount = i % 4; // 0..3 tags → tests the fixed tags-row height
+      const tags = Array.from({length: tagCount}, (_, k) => '<span class="tag">tag' + k + '</span>').join('');
+      const el = document.createElement('div');
+      el.className = 'card';
+      el.innerHTML =
+        '<div class="card-inner">' +
+          '<div class="card-head">' +
+            '<div class="card-icon type-' + t + '">' + (t==='script'?'Js':t==='app'?'Ap':'Pl') + '</div>' +
+            '<div class="card-titlewrap">' +
+              '<div class="card-name">' + longName + '</div>' +
+              '<div class="card-meta"><span class="card-ver">v1.' + i + '</span><span class="card-type-badge">' + t + '</span></div>' +
+            '</div>' +
+          '</div>' +
+          '<div class="card-desc">' + longDesc + '</div>' +
+          '<div class="card-tags">' + tags + '</div>' +
+          '<div class="card-foot"><div class="foot-left"><div class="status"><span class="sdot"></span><span>не установлен</span></div></div>' +
+          '<div class="foot-btns"><button class="btn"><span class="label">Установить</span></button></div></div>' +
+        '</div>';
+      return el;
+    }
+    const grid = document.getElementById('grid');
+    const N = parseInt(new URLSearchParams(location.search).get('count'), 10) || 14;
+    for (let i = 0; i < N; i++) grid.appendChild(buildCard(i));
+    // No JS balancing — .grid is a responsive CSS Grid (auto-fit + minmax 1fr):
+    // every full row fills edge to edge, columns are added/removed with width.
+    window.__gridReady = true;
+  </script>
+</body>
+</html>

@@ -1,0 +1,126 @@
+{
+  "_comment": "Catalog of plugins/scripts/presets. Add new entries here — the app reads ONLY from this file. No hardcoded list in the app. Per-plugin or per-version `installMode`: \"copy\" (place file into installPath, default), \"run\" (execute the downloaded file as a standalone installer; no installPath needed), or \"both\" (copy into installPath AND run it).",
+  "plugins": [
+    {
+      "id": "adobe-after-effects",
+      "name": "Adobe After Effects",
+      "description": "Программа для создания анимации, визуальных эффектов и моушн-дизайна.",
+      "type": "app",
+      "fileName": "Adobe.After.Effects.2020.v17.7.0.45.exe",
+      "downloadUrl": "https://drive.google.com/file/d/1cOG1wZ4eiXUjcbRt9DQjeY6kRjoVTS_3/view?usp=sharing",
+      "installPath": "Scripts/ScriptUI Panels",
+      "icon": "motion.png",
+      "author": "Adobe",
+      "homepage": "",
+      "tags": [
+        "animation",
+        "ui-panel"
+      ]
+    },
+    {
+      "id": "flow-easing",
+      "name": "Flow — Easing & Motion Path",
+      "description": "Графический редактор кривых плавности прямо в таймлайне After Effects.",
+      "type": "script",
+      "rating": 4.9,
+      "installPath": "Scripts/ScriptUI Panels",
+      "icon": "flow.png",
+      "author": "MTM Software",
+      "homepage": "",
+      "tags": [
+        "animation",
+        "easing"
+      ],
+      "versions": [
+        {
+          "version": "2.4.1",
+          "fileName": "Flow.jsx",
+          "downloadUrl": "https://example.com/downloads/Flow-2.4.1.jsx",
+          "changelog": "ACES support, bugfixes"
+        },
+        {
+          "version": "2.3.0",
+          "fileName": "Flow.jsx",
+          "downloadUrl": "https://example.com/downloads/Flow-2.3.0.jsx",
+          "changelog": "Initial public release"
+        },
+        {
+          "version": "1.9.5",
+          "fileName": "Flow.jsx",
+          "downloadUrl": "https://example.com/downloads/Flow-1.9.5.jsx",
+          "changelog": "Legacy build for AE 2022"
+        }
+      ]
+    },
+    {
+      "id": "deepglow",
+      "name": "Deep Glow",
+      "description": "Физически корректное свечение с поддержкой HDR и цветовых пространств ACES.",
+      "version": "1.8.0",
+      "type": "plugin",
+      "rating": 4.7,
+      "fileName": "DeepGlow.aex",
+      "downloadUrl": "https://example.com/downloads/DeepGlow.aex",
+      "installPath": "Plug-ins/DeepGlow",
+      "icon": "deepglow.png",
+      "author": "Plugin Everything",
+      "homepage": "",
+      "tags": [
+        "effects",
+        "glow"
+      ]
+    },
+    {
+      "id": "render-farm-client",
+      "name": "AE Render Farm Client",
+      "description": "Автономное приложение-клиент распределённого рендера: очереди, мониторинг, уведомления. Не плагин AE — отдельная программа. Копируется в папку приложений и запускается.",
+      "type": "app",
+      "rating": 4.5,
+      "installMode": "both",
+      "installPath": "Applications/RenderFarmClient",
+      "icon": "renderfarm.png",
+      "author": "Render Labs",
+      "homepage": "",
+      "tags": [
+        "render",
+        "app"
+      ],
+      "versions": [
+        {
+          "version": "1.4.0",
+          "fileName": "RenderFarmClient.exe",
+          "downloadUrl": "https://example.com/downloads/RenderFarmClient-1.4.0.exe",
+          "changelog": "Stable build"
+        },
+        {
+          "version": "1.3.2",
+          "fileName": "RenderFarmClient.exe",
+          "downloadUrl": "https://example.com/downloads/RenderFarmClient-1.3.2.exe",
+          "changelog": "Legacy"
+        }
+      ]
+    },
+    {
+      "id": "scene-collector-setup",
+      "name": "Scene Collector Installer",
+      "description": "Пример установщика-«runner»: загружается .exe и запускается. Установщик сам раскладывает файлы — папка назначения в конфиге не нужна.",
+      "type": "app",
+      "rating": 4.2,
+      "installMode": "run",
+      "icon": "",
+      "author": "Example",
+      "homepage": "",
+      "tags": [
+        "installer"
+      ],
+      "versions": [
+        {
+          "version": "3.0.1",
+          "fileName": "SceneCollectorSetup.exe",
+          "downloadUrl": "https://example.com/downloads/SceneCollectorSetup-3.0.1.exe",
+          "changelog": "Latest installer build"
+        }
+      ]
+    }
+  ]
+}

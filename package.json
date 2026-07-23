@@ -1,0 +1,52 @@
+{
+  "name": "editor-helper-lite",
+  "version": "1.0.0",
+  "description": "Desktop app (lite, no catalog editor) to install plugins, scripts and presets for Adobe After Effects from a JSON catalog",
+  "main": "main.js",
+  "author": "",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron . --dev",
+    "dist": "electron-builder --win portable",
+    "dist:installer": "electron-builder --win nsis"
+  },
+  "devDependencies": {
+    "electron": "^31.0.0",
+    "electron-builder": "^25.1.8"
+  },
+  "build": {
+    "appId": "com.editorhelper.app",
+    "productName": "Editor Helper",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "core/**/*",
+      "installer/**/*",
+      "ui/**/*",
+      "config/plugins.json",
+      "config/icons/**/*"
+    ],
+    "win": {
+      "target": [
+        "portable"
+      ],
+      "icon": "icon.png"
+    },
+    "portable": {
+      "artifactName": "Editor-Helper.exe"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "artifactName": "Editor-Helper-Setup.exe"
+    }
+  },
+  "allowScripts": {
+    "electron@31.7.7": true
+  }
+}

@@ -1,0 +1,11 @@
+node_modules/
+logs/*.log
+config/installed.json
+dist/
+
+# Dev / layout-verification artifacts (not app source)
+ui/_shots/
+
+# Generated brand avatar (embedded from Desktop/1.png at build time)
+installer/src/_Assets.cs
+installer/icon.ico
