@@ -26,8 +26,8 @@ namespace EhSetup
 
     public sealed class Installer
     {
-        public string Repo = "dekixh/Editor-Helper-Lite";
-        public string PointerUrl = "https://raw.githubusercontent.com/dekixh/Editor-Helper-Lite/main/latest.txt";
+        public string Repo = "dekixh/Editor-Helper";
+        public string PointerUrl = "https://raw.githubusercontent.com/dekixh/Editor-Helper/main/latest.txt";
         public string AssetName = "Editor-Helper.exe";
         public string SetupName = "Editor-Helper-Setup.exe";
         public string AppName = "Editor Helper";

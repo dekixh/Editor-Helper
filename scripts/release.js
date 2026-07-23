@@ -5,17 +5,17 @@
 //   node scripts/release.js              # build + publish (prerelease if version has -beta/-alpha/-rc)
 //   node scripts/release.js --no-build   # skip `npm run dist`, use existing dist/Editor-Helper.exe
 //   node scripts/release.js --prerelease # force prerelease:true
-//   node scripts/release.js --repo owner/repo  # override (default dekixh/Editor-Helper-Lite)
+//   node scripts/release.js --repo owner/repo  # override (default dekixh/Editor-Helper)
 //
 // Auth: pulls a token from the local git credential helper (git credential fill
 // for https://github.com), so no GH_TOKEN env var is needed. Requires the stored
-// credential to have push/admin on the repo (it does for dekixh/Editor-Helper-Lite).
+// credential to have push/admin on the repo (it does for dekixh/Editor-Helper).
 
 const fs = require('fs');
 const path = require('path');
 const { spawn, execSync } = require('child_process');
 
-const DEFAULT_REPO = 'dekixh/Editor-Helper-Lite';
+const DEFAULT_REPO = 'dekixh/Editor-Helper';
 const ASSET_NAME = 'Editor-Helper.exe';
 const ROOT = path.resolve(__dirname, '..');
 const DIST_EXE = path.join(ROOT, 'dist', ASSET_NAME);

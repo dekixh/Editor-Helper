@@ -593,7 +593,7 @@ namespace EhSetup
             try
             {
                 string cb = DateTime.Now.Ticks.ToString();
-                using (WebClient wc = new WebClient()) { wc.Headers.Add("User-Agent", "Editor-Helper-Setup"); return ParseVer(wc.DownloadString("https://raw.githubusercontent.com/dekixh/Editor-Helper-Lite/main/latest.txt").Trim()); }
+                using (WebClient wc = new WebClient()) { wc.Headers.Add("User-Agent", "Editor-Helper-Setup"); return ParseVer(wc.DownloadString("https://raw.githubusercontent.com/dekixh/Editor-Helper/main/latest.txt").Trim()); }
             }
             catch { return ""; }
         }
@@ -1173,6 +1173,6 @@ SOFTWARE.
 
 Editor Helper — приложение для установки плагинов, скриптов и пресетов
 для Adobe After Effects. Установщик загружает последнюю версию из
-GitHub Releases репозитория dekixh/Editor-Helper-Lite.";
+GitHub Releases репозитория dekixh/Editor-Helper.";
     }
 }

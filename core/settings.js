@@ -31,7 +31,7 @@ const DEFAULTS = {
   // named "Editor-Helper.exe". Empty = skip update checks entirely.
   // Defaults to this app's own repo so users get updates out of the box;
   // they can change it in Settings.
-  update: { repo: 'dekixh/Editor-Helper-Lite' },
+  update: { repo: 'dekixh/Editor-Helper' },
 };
 
 function read() {
