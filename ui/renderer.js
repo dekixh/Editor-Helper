@@ -117,6 +117,10 @@ function ratingOf(p) {
 async function init() {
   setConn('загрузка…', false);
   const res = await window.api.init();
+  // Show the real app version (package.json via Electron) in the titlebar,
+  // replacing the static HTML placeholder.
+  const verEl = document.querySelector('.titlebar-version');
+  if (verEl && res.appVersion) verEl.textContent = 'v' + res.appVersion;
   // AE versions are returned even on failure so the version selector stays useful.
   state.versions = res.versions || [];
   state.activeVersion = res.activeVersion || null;

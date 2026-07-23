@@ -122,7 +122,7 @@ async function loadServerCatalog() {
 // prefer it and fall back to the local catalog if the request fails.
 ipcMain.handle('app:init', async () => {
   cachedVersions = mergedVersions();
-  const base = { versions: cachedVersions, activeVersion: cachedVersions[0] || null, state: state.read() };
+  const base = { versions: cachedVersions, activeVersion: cachedVersions[0] || null, state: state.read(), appVersion: app.getVersion() };
   const cat = await loadServerCatalog();
   return { ok: true, ...cat, ...base };
 });

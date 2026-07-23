@@ -1,6 +1,6 @@
 {
   "name": "editor-helper-lite",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Desktop app (lite, no catalog editor) to install plugins, scripts and presets for Adobe After Effects from a JSON catalog",
   "main": "main.js",
   "author": "",
