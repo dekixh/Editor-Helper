@@ -1,1 +1,1 @@
-https://github.com/dekixh/Editor-Helper/releases/download/v1.0.9/Editor-Helper.exe
+https://github.com/dekixh/Editor-Helper/releases/download/v1.0.10/Editor-Helper.exe
